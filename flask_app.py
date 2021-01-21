@@ -5,11 +5,7 @@ app.config["DEBUG"] = True
 
 @app.route('/')
 def index():
-    return render_template("index.html")
-
-@app.route('/parth')
-def everyone():
-    return 'gand marao'
+    return render_template("main_page.html")
 
 @app.route('/wibble')
 def wibble():
