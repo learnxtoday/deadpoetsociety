@@ -27,7 +27,7 @@ def index():
 
 @app.route("/members")
 def members():
-    return "Members"
+    return "Member List"
 
 @app.route("/members/<string:name>/")
 def getMember(name):
