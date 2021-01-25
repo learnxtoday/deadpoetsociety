@@ -27,9 +27,6 @@ def index():
     comments.append(request.form["contents"])
     return redirect(url_for('index'))
 
-@app.route("/members")
-def members():
-    return "Member List"
 
 @app.route("/members/<string:name>/")
 def getMember(name):
@@ -47,5 +44,4 @@ def getMember(name):
         )
 
 if __name__ == '__main__':
-    #app.run(debug=True)
     app.run(debug=True, host='0.0.0.0', port=42069)
