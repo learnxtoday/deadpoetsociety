@@ -19,6 +19,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 comments = []
 
 
+# SCRATCHBOARD
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "GET":
@@ -28,6 +29,7 @@ def index():
     return redirect(url_for('index'))
 
 
+#QUOTE
 @app.route("/members/<string:name>/")
 def getMember(name):
     quotes = [ "'If people do not believe that mathematics is simple, it is only because they do not realize how complicated life is.' -- John Louis von Neumann ",
@@ -44,4 +46,4 @@ def getMember(name):
         )
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=42069)
+    app.run(debug=True, host='0.0.0.0', port=3000)
