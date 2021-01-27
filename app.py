@@ -15,6 +15,7 @@ def home():
 def do_admin_login():
     if request.form['password'] == 'password' and request.form['username'] == 'admin':
         session['logged_in'] = True
+        return home()
     else:
         flash('wrong password!')
         return home()
