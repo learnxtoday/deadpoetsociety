@@ -9,7 +9,14 @@ def home():
     if not session.get('logged_in'):
         return render_template('login.html')
     else:
-        return redirect(url_for('showProfile'))
+        return redirect(url_for('feed'))
+
+@app.route('/feed')
+def feed():
+    if session.get('logged_in'):
+        return "<h1>feed</h1>"
+    else:
+        return render_template('login.html')
 
 @app.route("/profile")
 def showProfile():
