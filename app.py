@@ -1,4 +1,5 @@
 from flask import Flask, flash, redirect, render_template, request, session, abort, url_for
+from random import randint
 import os
 
 app = Flask(__name__)
@@ -11,10 +12,23 @@ def home():
     else:
         return redirect(url_for('feed'))
 
+
+#@app.route("/feed/<string:name>/")
+@app.route("/feed/uname/")
 @app.route('/feed')
 def feed():
     if session.get('logged_in'):
-        return "<h1>feed</h1>"
+        uname = session.get('username')
+        uname = uname.capitalize()
+        quotes = [ "'If people do not believe that mathematics is simple, it is only because they do not realize how complicated life is.' -- John Louis von Neumann ",
+                "'Computer science is no more about computers than astronomy is about telescopes' --  Edsger Dtra ",
+                "'To understand recursion you must first understand recursion..' -- Unknown",
+                "'You look at things that are and ask, why? I dream of things that never were and ask, why not?' -- Unknown",
+                "'Mathematics is the key and door to the sciences.' -- Galileo Galilei",
+                "'Not everyone will understand your journey. Thats fine. Its not their journey to make sense of. Its yours.' -- Unknown"  ]
+        randomNumber = randint(0,len(quotes)-1)
+        quote = quotes[randomNumber]
+        return render_template('members.html', **locals())
     else:
         return render_template('login.html')
 
